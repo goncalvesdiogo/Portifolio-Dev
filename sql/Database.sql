@@ -68,6 +68,7 @@ DROP TABLE IF EXISTS `my_stocks_db`.`finantial_movement_type` ;
 CREATE TABLE IF NOT EXISTS `my_stocks_db`.`finantial_movement_type` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `description` VARCHAR(200) NOT NULL,
+  `movement_type` VARCHAR(1) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4

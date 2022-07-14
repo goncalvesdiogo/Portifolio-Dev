@@ -1,7 +1,7 @@
 
 ---
 ## Portifolio-Dev
----
+
 This project is intended to show my Java Developer Skills using the following stack:
 
 Platform:
@@ -30,7 +30,7 @@ Infrastructure:
 
 ---
 ## Project Description
----
+
 1. api-bff
 2. service--stock
 3. service--stock-live-data
@@ -38,14 +38,13 @@ Infrastructure:
 
 ---
 ## Database Diagram
----
+
 ![alt text][diagram]
 
 
 
 
-
-[diagram]: https://github.com/goncalvesdiogo/Portifolio-Dev/blob/master/MySQLWorkbench-ERR/err-diagram.png
+[diagram]: https://github.com/goncalvesdiogo/Portifolio-Dev/blob/master/MySQLWorkbench-ERR/err-diagram.png "Database Diagram"
 
 
 

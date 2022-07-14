@@ -50,7 +50,7 @@ Infrastructure:
 
 [diagram]: https://github.com/goncalvesdiogo/Portifolio-Dev/blob/master/images/err-diagram.png "Database Diagram"
 
-[diagram]: https://github.com/goncalvesdiogo/Portifolio-Dev/blob/master/images/infra.png "Infrastruture Diagram"
+[infra]: https://github.com/goncalvesdiogo/Portifolio-Dev/blob/master/images/infra.png "Infrastruture Diagram"
 
 
 

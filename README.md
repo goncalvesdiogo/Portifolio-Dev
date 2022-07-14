@@ -33,19 +33,24 @@ Infrastructure:
 
 1. api-bff
 2. service--stock
-3. service--stock-live-data
+3. service--stock-data
 
 
 ---
 ## Database Diagram
 
 ![alt text][diagram]
+---
+## Infrastructure Diagram
+
+![alt text][infra]
+---
 
 
 
+[diagram]: https://github.com/goncalvesdiogo/Portifolio-Dev/blob/master/images/err-diagram.png "Database Diagram"
 
-[diagram]: https://github.com/goncalvesdiogo/Portifolio-Dev/blob/master/MySQLWorkbench-ERR/err-diagram.png "Database Diagram"
-
+[diagram]: https://github.com/goncalvesdiogo/Portifolio-Dev/blob/master/images/infra.png "Infrastruture Diagram"
 
 
 

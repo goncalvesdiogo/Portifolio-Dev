@@ -1,0 +1,6 @@
+
+
+# JSON serialization config
+spring:
+  jackson:
+    default-property-inclusion: non_null

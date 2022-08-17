@@ -4,13 +4,13 @@ info:
   description: BFF API.
   version: 0.1.9
 servers:
-  - url: http://localhost:5000/v1
+  - url: http://localhost:5050/api-bff
     description: Optional server description, e.g. Main (production) server
 paths:
   /stocks:
     get:
-      operationId: getStocks
       summary: Returns a list of stocks.
+      operationId: getStocks
       responses:
         '200':    # status code
           description: A JSON array of stocks
@@ -20,6 +20,36 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Stock'
+    post:
+      summary: Save stock data.
+      operationId: saveStock
+      responses:
+        '201': # status code
+          description: Create a new record for a stock
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Stock'
+  /stocks/{id}:
+    get:
+      summary: Returns a stock by the Id.
+      operationId: getStockById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200': # status code
+          description: A JSON object of a stock
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Stock'
 components:
   schemas:
     Stock:

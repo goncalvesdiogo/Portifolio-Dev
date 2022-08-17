@@ -1,0 +1,14 @@
+aws:
+  secretsmanager:
+    enabled: true
+    endpoint: http://localhost:4566
+    prefix: secret
+    name: mysql
+
+
+spring:
+  aws:
+    secretsmanager:
+      secretName: secret/mysql
+      endpoint: http://localhost:4566
+      region: us-east-1

@@ -1,0 +1,40 @@
+# App config
+server:
+  servlet:
+    context-path: /service--stock
+  port: 5060
+
+# Spring config
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/my_stocks_db
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${username}
+    password: ${password}
+
+    #url: jdbc-secretsmanager:mysql://localhost:3306/my_stocks_db
+    #driver-class-name: com.amazonaws.secretsmanager.sql.AWSSecretsManagerMySQLDriver
+    #username: secret/mysql
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+
+
+# Flyway config
+flyway:
+  url: ${spring.datasource.url}
+  schema: my_stocks_db
+  username: ${spring.datasource.username}
+  password: ${spring.datasource.password}
+
+# JSON config
+  jackson:
+    default-property-inclusion: non_null
+
+# swagger-ui config
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+#logging:
+#  level:
+#    root: DEBUG

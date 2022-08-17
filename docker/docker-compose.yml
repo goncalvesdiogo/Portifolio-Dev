@@ -3,7 +3,7 @@ version: "3.8"
 services:
   localstack:
     container_name: "localstack"
-    image: localstack/localstack
+    image: localstack/localstack-full 
     ports:
       - "127.0.0.1:4566:4566"            # LocalStack Gateway
       - "127.0.0.1:4510-4559:4510-4559"  # external services port range
@@ -21,7 +21,7 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock"
   
   mysql_db:
-    image: mysql:5.7
+    image: mysql:latest
     container_name: mysql_localstack
     restart: always
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci

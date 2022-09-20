@@ -6,5 +6,7 @@ import java.util.List;
 
 public interface BrokerUseCase {
 
-    List<Broker> getAllList();
+    List<Broker> findAll();
+
+    Broker findById(Integer Id);
 }

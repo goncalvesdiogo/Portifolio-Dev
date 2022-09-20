@@ -7,5 +7,7 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface BrokerRepositoryMapper {
-    List<Broker> from (List<com.portifolio.servicestock.repositories.entities.Broker> brokerList);
+    List<Broker> fromList (List<com.portifolio.servicestock.repositories.entities.Broker> brokerList);
+
+    Broker from (com.portifolio.servicestock.repositories.entities.Broker broker);
 }

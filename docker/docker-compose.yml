@@ -16,9 +16,7 @@ services:
       - REGION=us-east-1
       - DATA_DIR=/tmp/localstack/data
     volumes:
-      - "./localstack/data:/tmp/localstack/data"
-      - "${LOCALSTACK_VOLUME_DIR:-./volume}:/var/lib/localstack"
-      - "/var/run/docker.sock:/var/run/docker.sock"
+     - "localstack-vol:/tmp/localstack" #use a volume not a path
   
   mysql_db:
     image: mysql:latest
@@ -43,5 +41,6 @@ services:
       - "14268:14268"
 volumes:
   my-db:
+  localstack-vol: 
     
     

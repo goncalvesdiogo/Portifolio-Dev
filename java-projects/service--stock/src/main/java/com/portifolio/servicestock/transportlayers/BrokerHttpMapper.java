@@ -10,7 +10,9 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface BrokerHttpMapper {
 
-    List<BrokerDAO> map(List<Broker> brokerList);
+    List<BrokerDAO> fromList(List<Broker> brokerList);
+
+    BrokerDAO from(Broker brokerList);
 
 
 }

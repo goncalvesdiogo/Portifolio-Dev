@@ -1,3 +1,10 @@
+spring:
+  aws:
+    secretsmanager:
+      secretName: secret/mysql
+      endpoint: http://localhost:4566
+      region: us-east-1
+
 aws:
   secretsmanager:
     enabled: true
@@ -6,9 +13,7 @@ aws:
     name: mysql
 
 
-spring:
-  aws:
-    secretsmanager:
-      secretName: secret/mysql
-      endpoint: http://localhost:4566
-      region: us-east-1
+
+
+#-- {"username":"root","password":"password"}
+

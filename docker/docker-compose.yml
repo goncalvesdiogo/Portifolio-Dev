@@ -5,18 +5,20 @@ services:
     container_name: "localstack"
     image: localstack/localstack-full 
     ports:
-      - "127.0.0.1:4566:4566"            # LocalStack Gateway
-      - "127.0.0.1:4510-4559:4510-4559"  # external services port range
-      - "127.0.0.1:443:443"              # LocalStack HTTPS Gateway (only required for Pro)
+      - '4563-4599:4563-4599'
+      - '8055:8080'
     environment:
-      - DEBUG=${DEBUG-}
-      - PERSISTENCE=${PERSISTENCE-}
-      - LAMBDA_EXECUTOR=${LAMBDA_EXECUTOR-}
-      - DOCKER_HOST=unix:///var/run/docker.sock
+      - AWS_DEFAULT_REGION=sa-east-1
+      - AWS_ACCESS_KEY_ID=fakeAccessKeyId
+      - AWS_SECRET_ACCESS_KEY=fakeSecretAccessKey
       - REGION=us-east-1
-      - DATA_DIR=/tmp/localstack/data
+      - DEBUG=${DEBUG-}
+      - PERSISTENCE=1
+      - DOCKER_HOST=unix:///var/run/docker.sock
     volumes:
-     - "localstack-vol:/tmp/localstack" #use a volume not a path
+     - /home/goncalvesdiogo/work/gitRepo/Portifolio-Dev/docker/volume/localstack:/var/lib/localstack
+     - ./scripts:/docker-entrypoint-initaws.d
+     - /var/run/docker.sock:/var/run/docker.soc
   
   mysql_db:
     image: mysql:latest
@@ -30,7 +32,7 @@ services:
     expose:
       - "3306"
     volumes:
-      - my-db:/var/lib/mysql       
+      - /home/goncalvesdiogo/work/gitRepo/Portifolio-Dev/docker/volume/mysql:/var/lib/mysql
 
   jaeger:
     container_name: jaeger_localstack

@@ -26,4 +26,5 @@ public class Broker {
 
     @Column(name = "broker_cnpj", nullable = false)
     private String brokerCnpj;
+
 }

@@ -8,7 +8,7 @@ import lombok.Getter;
 public enum StockType {
 
     ACOES(1, "AÇÕES"),
-    FUNDOS_IMOBILIARIOS(2, "AÇÕES");
+    FUNDOS_IMOBILIARIOS(2, "FUNDOS IMOBILIÁRIOS");
 
     private Integer id;
     private String description;

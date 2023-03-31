@@ -1,6 +1,6 @@
 package com.portifolio.servicestock.repositories.entities;
 
-import com.portifolio.servicestock.repositories.entities.enums.FinantialMoventType;
+import com.portifolio.servicestock.repositories.entities.enums.FinantialMovementType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,7 +25,7 @@ public class FinantialMovement {
     private LocalDate movementDate;
 
     @Column(name = "finantial_movement_type_id")
-    private FinantialMoventType finantialMovementType;
+    private FinantialMovementType finantialMovementType;
 
     @Column(name = "quantity")
     private Integer quantity;
@@ -47,6 +47,5 @@ public class FinantialMovement {
     @ManyToOne
     @JoinColumn(name = "broker_id", referencedColumnName = "id")
     private Broker broker;
-
 
 }

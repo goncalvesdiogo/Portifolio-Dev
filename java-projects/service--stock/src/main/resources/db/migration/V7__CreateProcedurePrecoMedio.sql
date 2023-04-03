@@ -18,7 +18,7 @@ DECLARE w_total_qtd_negociada INT;
 DECLARE w_total_valor_negociado DECIMAL(10,2);
 
 DECLARE cur1 CURSOR FOR select fmv.movement_date
-                             , fmv.finantial_movement_type_idShow
+                             , fmv.finantial_movement_type_id
                              , fmv.quantity
                              , fmv.unit_price
                              , fmv.cost

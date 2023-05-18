@@ -141,7 +141,7 @@ from (select vendas.codigo
                    , cast(sum((opr.QTD_NEGOCIADA * opr.preco_unitario)) as decimal(9,2)) valor_venda
                 FROM operacoes opr
                    , ativo atv
-               WHERE opr.data_negociacao between '2019-01-01' and '2020-12-31' 
+               WHERE opr.data_negociacao between '2019-01-01' and '2022-12-31' 
                  and atv.id = opr.ativo_id   
                  and atv.categoria_ativo_id = 1
                  and opr.tipo_operacao = 'V'            

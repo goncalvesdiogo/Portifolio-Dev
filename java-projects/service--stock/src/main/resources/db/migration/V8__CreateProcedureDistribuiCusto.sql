@@ -31,8 +31,7 @@ BEGIN
                                  , quantity
                                  , unit_price
 							  FROM finantial_movement
-						     where finantial_movement_type_id = 7
-						       and broker_invoice_id  = w_id;
+						     where broker_invoice_id  = w_id;
 
   declare continue handler for not found  set no_more_rows := true;
 

@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `my_stocks_db` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `my_stocks_db`;
 -- MySQL dump 10.13  Distrib 8.0.32, for Linux (x86_64)
 --
 -- Host: localhost    Database: my_stocks_db
@@ -169,7 +171,7 @@ CREATE TABLE `flyway_schema_history` (
 
 LOCK TABLES `flyway_schema_history` WRITE;
 /*!40000 ALTER TABLE `flyway_schema_history` DISABLE KEYS */;
-INSERT INTO `flyway_schema_history` VALUES (1,'1','CreateDatabase','SQL','V1__CreateDatabase.sql',-911247456,'root','2023-01-24 18:18:26',305,1),(2,'2','InsertDomainData','SQL','V2__InsertDomainData.sql',-1463754928,'root','2023-01-24 18:18:26',9,1),(3,'3','InsertBrokerList','SQL','V3__InsertBrokerList.sql',-305667111,'root','2023-01-24 18:18:26',4,1),(4,'4','InsertStockList','SQL','V4__InsertStockList.sql',155589149,'root','2023-01-24 18:18:26',13,1),(5,'5','InsertInvoices','SQL','V5__InsertInvoices.sql',-423656528,'root','2023-01-24 18:18:26',30,1),(6,'6','InsertFiancialMovements','SQL','V6__InsertFiancialMovements.sql',-1559281298,'root','2023-01-24 18:18:27',62,1),(7,'7','CreateProcedurePrecoMedio','SQL','V7__CreateProcedurePrecoMedio.sql',-1322216575,'root','2023-04-01 10:35:59',21,1),(8,'8','CreateProcedureDistribuiCusto','SQL','V8__CreateProcedureDistribuiCusto.sql',176518149,'root','2023-04-03 12:19:07',23,1);
+INSERT INTO `flyway_schema_history` VALUES (1,'1','CreateDatabase','SQL','V1__CreateDatabase.sql',-911247456,'root','2023-01-24 18:18:26',305,1),(2,'2','InsertDomainData','SQL','V2__InsertDomainData.sql',-1463754928,'root','2023-01-24 18:18:26',9,1),(3,'3','InsertBrokerList','SQL','V3__InsertBrokerList.sql',-305667111,'root','2023-01-24 18:18:26',4,1),(4,'4','InsertStockList','SQL','V4__InsertStockList.sql',155589149,'root','2023-01-24 18:18:26',13,1),(5,'5','InsertInvoices','SQL','V5__InsertInvoices.sql',-423656528,'root','2023-01-24 18:18:26',30,1),(6,'6','InsertFiancialMovements','SQL','V6__InsertFiancialMovements.sql',-1559281298,'root','2023-01-24 18:18:27',62,1),(7,'7','CreateProcedurePrecoMedio','SQL','V7__CreateProcedurePrecoMedio.sql',-1322216575,'root','2023-04-01 10:35:59',21,1),(8,'8','CreateProcedureDistribuiCusto','SQL','V8__CreateProcedureDistribuiCusto.sql',-631010653,'root','2024-02-06 17:34:57',24,1);
 /*!40000 ALTER TABLE `flyway_schema_history` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -307,6 +309,10 @@ LOCK TABLES `user_roles` WRITE;
 /*!40000 ALTER TABLE `user_roles` DISABLE KEYS */;
 /*!40000 ALTER TABLE `user_roles` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping events for database 'my_stocks_db'
+--
 
 --
 -- Dumping routines for database 'my_stocks_db'
@@ -510,4 +516,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-30 23:04:49
+-- Dump completed on 2024-03-07 21:35:47

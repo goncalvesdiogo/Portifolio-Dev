@@ -80,7 +80,7 @@ BEGIN
          limit 1 offset 1;
 
         update finantial_movement
-           set cost = custo_negociacao + w_custo_ratear
+           set cost = cost + w_custo_ratear
 		 where id = w_id_opr_custo_ratear;
 
       end if;

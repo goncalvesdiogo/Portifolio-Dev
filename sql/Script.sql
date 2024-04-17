@@ -10,7 +10,7 @@ select fm.movement_date
   from finantial_movement fm 
      , finantial_movement_type fmt
  where fm.finantial_movement_type_id = fmt.id
-   and fm.movement_date < last_day('2022-12-01') 
+   and fm.movement_date < last_day('2023-12-01') 
    and fm.broker_id = 1
  group by fm.movement_date,
           fm.broker_invoice_id 
@@ -36,7 +36,7 @@ select stk.code
              ,' - VALOR TOTAL: R$ ', REPLACE(cast((sum(if(fmv.finantial_movement_type_id in(6,9), fmv.quantity, 0) ) - sum(if(fmv.finantial_movement_type_id in(7,10), fmv.quantity, 0) )) * get_preco_medio_ativo_by_data(stk.id, fmv.broker_id, last_day('2022-12-01')) as decimal (9,2)) ,'.',',')) DESCR
   from finantial_movement 	fmv 
       ,stock 				stk        
- where fmv.movement_date  <= last_day('2022-12-01') 
+ where fmv.movement_date  <= last_day('2023-12-01') 
    and stk.id  = fmv.stock_id     
    and fmv.finantial_movement_type_id  in (6,7,9,10)
    and fmv.broker_id = 1
@@ -69,7 +69,7 @@ select stk.id
      , finantial_movement_type fmt   
      , stock 			       stk        
      , stock_type 			   stp
- where fmv.movement_date between '2022-01-01' and last_day('2022-12-01')
+ where fmv.movement_date between '2023-01-01' and last_day('2023-12-01')
    and fmt.id = fmv.finantial_movement_type_id
    and fmt.id in (2, 3, 4, 8)
    and stk.id = fmv.stock_id
@@ -104,7 +104,7 @@ from (select vendas.code
                    , cast(sum((fmv.quantity * fmv.unit_price) - fmv.cost) as decimal(9,2)) valor_venda
                 FROM finantial_movement fmv
                    , stock              stk
-               WHERE fmv.movement_date  < last_day('2022-12-01')
+               WHERE fmv.movement_date  < last_day('2023-12-01')
                  and stk.id = fmv.stock_id    
                  and stk.stock_type_id = 2
                  and fmv.finantial_movement_type_id in (7,10)
@@ -120,7 +120,7 @@ from (select vendas.code
            and fmv.broker_id  = vendas.broker_id
 		 group by  1,2,3,5 
     ) vendas 
-    where ano_negociacao = 2022
+    where ano_negociacao = 2023
 group by 1,2,3 
 ORDER BY 1,2,3;
 
@@ -148,7 +148,7 @@ from (select vendas.code
                    , cast(sum((fmv.quantity * fmv.unit_price) - fmv.cost) as decimal(9,2)) valor_venda
                 FROM finantial_movement fmv
                    , stock              stk
-               WHERE fmv.movement_date  < last_day('2022-12-01')
+               WHERE fmv.movement_date  < last_day('2023-12-01')
                  and stk.id = fmv.stock_id    
                  and stk.stock_type_id = 1
                  and fmv.finantial_movement_type_id in (7,10)
@@ -164,7 +164,7 @@ from (select vendas.code
            and fmv.broker_id  = vendas.broker_id
 		 group by  1,2,3,5 
     ) vendas 
-    where ano_negociacao = 2022
+    where ano_negociacao = 2023
 group by 1,2,3 
 ORDER BY 1,2,3;
 /*
@@ -195,6 +195,7 @@ QUERIE RECUPERAR AS INFORMACOES DE ATIVOS EM CARTEIRA
      , s.code
      , ( select sum((quantity * unit_price)-cost) from finantial_movement where stock_id = s.id and finantial_movement_type_id in(7,10)) vendas
      , ( select sum((quantity * unit_price)+cost) from finantial_movement where stock_id = s.id and finantial_movement_type_id in(6,9) and movement_date <= (select max(movement_date) from finantial_movement where stock_id = s.id and finantial_movement_type_id in(7,10))) compras
+     , ( select sum((quantity * unit_price)) from finantial_movement where stock_id = s.id and finantial_movement_type_id in(2,3,4,8,10)) rendimentos
   from stock s)v;
   
  

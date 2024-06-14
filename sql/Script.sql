@@ -32,8 +32,8 @@ select stk.code
              ,if(stk.stock_type_id = 2,' - ADMINISTRADORA: ',''), if(stk.stock_type_id = 2,stk.holder_company_name ,'')
              ,if(stk.stock_type_id = 2,' - CNPJ: ',''), if(stk.stock_type_id = 2,stk.holder_company_cnpj  ,'')    
              ,' - QTD DE COTAS: ', sum(if(fmv.finantial_movement_type_id in(6,9), fmv.quantity, 0) ) -  sum(if(fmv.finantial_movement_type_id in(7,10), fmv.quantity, 0) ) 
-             ,' - PREÇO MÉDIO: R$ ', REPLACE(cast(get_preco_medio_ativo_by_data(stk.id, fmv.broker_id , last_day('2022-12-01')) as decimal (9,2)) ,'.',',') 
-             ,' - VALOR TOTAL: R$ ', REPLACE(cast((sum(if(fmv.finantial_movement_type_id in(6,9), fmv.quantity, 0) ) - sum(if(fmv.finantial_movement_type_id in(7,10), fmv.quantity, 0) )) * get_preco_medio_ativo_by_data(stk.id, fmv.broker_id, last_day('2022-12-01')) as decimal (9,2)) ,'.',',')) DESCR
+             ,' - PREÇO MÉDIO: R$ ', REPLACE(cast(get_preco_medio_ativo_by_data(stk.id, fmv.broker_id , last_day('2023-12-01')) as decimal (9,2)) ,'.',',') 
+             ,' - VALOR TOTAL: R$ ', REPLACE(cast((sum(if(fmv.finantial_movement_type_id in(6,9), fmv.quantity, 0) ) - sum(if(fmv.finantial_movement_type_id in(7,10), fmv.quantity, 0) )) * get_preco_medio_ativo_by_data(stk.id, fmv.broker_id, last_day('2023-12-01')) as decimal (9,2)) ,'.',',')) DESCR
   from finantial_movement 	fmv 
       ,stock 				stk        
  where fmv.movement_date  <= last_day('2023-12-01') 

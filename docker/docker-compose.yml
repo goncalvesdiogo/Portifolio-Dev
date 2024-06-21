@@ -1,9 +1,7 @@
-version: "3.8"
-
 services:
   localstack:
     container_name: "localstack"
-    image: localstack/localstack-full 
+    image: localstack/localstack
     ports:
       - '4563-4599:4563-4599'
       - '8055:8080'
@@ -15,13 +13,14 @@ services:
       - DEBUG=${DEBUG-}
       - PERSISTENCE=1
       - DOCKER_HOST=unix:///var/run/docker.sock
+      - DNS_ADDRESS=0
     volumes:
      - /home/goncalvesdiogo/work/gitRepo/Portifolio-Dev/docker/volume/localstack:/var/lib/localstack
-     - ./scripts:/docker-entrypoint-initaws.d
+     - ./scripts:/etc/localstack/init/ready.d
      - /var/run/docker.sock:/var/run/docker.soc
   
   mysql_db:
-    image: mysql:latest
+    image: mysql:8.0.36
     container_name: mysql_localstack
     restart: always
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
@@ -32,11 +31,11 @@ services:
     expose:
       - "3306"
     volumes:
-      - /home/goncalvesdiogo/work/gitRepo/Portifolio-Dev/docker/volume/mysql:/var/lib/mysql
+      - /home/goncalvesdiogo/work/gitRepo/Portifolio-Dev/docker/volume/mysql:/var/lib64/mysql
 
   jaeger:
     container_name: jaeger_localstack
-    image: jaegertracing/all-in-one    
+    image: jaegertracing/all-in-one:1.58    
     depends_on:
       - "localstack"
     ports:

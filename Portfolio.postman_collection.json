@@ -1,0 +1,259 @@
+{
+	"info": {
+		"_postman_id": "26ddf51b-a3af-4c00-ab88-bd9177e46047",
+		"name": "Portfolio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8108434"
+	},
+	"item": [
+		{
+			"name": "api-bff",
+			"item": [
+				{
+					"name": "brokers-findAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api-bff/brokers/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api-bff",
+								"brokers",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getBrokerById",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "service-stock",
+			"item": [
+				{
+					"name": "brokers",
+					"item": [
+						{
+							"name": "brokers-findAll",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/service-stock/brokers",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"service-stock",
+										"brokers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "brokers-create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"brokerShortName\" : \"TESTE  \",\n    \"brokerName\" : \"TESTE DE OPERADORA\",\n    \"brokerCnpj\" : \"1234567890\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/service-stock/brokers",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"service-stock",
+										"brokers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "brokers-update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"brokerShortName\" : \"TESTE  5\",\n    \"brokerName\" : \"TESTE DE OPERADORA\",\n    \"brokerCnpj\" : \"5555\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/service-stock/brokers/5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"service-stock",
+										"brokers",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "brokers-delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"brokerShortName\" : \"TESTE  3\",\n    \"brokerName\" : \"TESTE DE OPERADORA\",\n    \"brokerCnpj\" : \"1234567890\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/service-stock/brokers/5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"service-stock",
+										"brokers",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "brokers-findById",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/service-stock/brokers/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"service-stock",
+										"brokers",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "broker-invoices",
+					"item": [
+						{
+							"name": "broker-invoices-findAll",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/service-stock/broker-invoices",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"service-stock",
+										"broker-invoices"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "broker-invoice-findById",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/service-stock/broker-invoices/206",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"service-stock",
+										"broker-invoices",
+										"206"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "broker-invoices-create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{    \n    \"invoiceNumber\": 10101,\n    \"invoiceDate\": \"2025-12-27\",\n    \"totalSold\": 0.00,\n    \"totalBought\": 4.62,\n    \"totalLiquidationTax\": 0.00,\n    \"totalFees\": 0.00,\n    \"totalTax\": 0.00,\n    \"totalBrokerage\": 0.00,\n    \"broker\": {\n        \"id\": 1      \n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/service-stock/broker-invoices",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"service-stock",
+										"broker-invoices"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

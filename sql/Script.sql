@@ -190,13 +190,20 @@ QUERIE RECUPERAR AS INFORMACOES DE ATIVOS EM CARTEIRA
  
  
  # VER SALDO POR ATIVO 
- select v.*, v.vendas - v.compras lucro_prejuizo from(
- select s.id
-     , s.code
-     , ( select sum((quantity * unit_price)-cost) from finantial_movement where stock_id = s.id and finantial_movement_type_id in(7,10)) vendas
-     , ( select sum((quantity * unit_price)+cost) from finantial_movement where stock_id = s.id and finantial_movement_type_id in(6,9) and movement_date <= (select max(movement_date) from finantial_movement where stock_id = s.id and finantial_movement_type_id in(7,10))) compras
-     , ( select sum((quantity * unit_price)) from finantial_movement where stock_id = s.id and finantial_movement_type_id in(2,3,4,8,10)) rendimentos
-  from stock s)v;
+ select v.id
+      , v.code
+      , coalesce(v.compras, 0) as compras
+      , coalesce(v.vendas, 0) as vendas      
+      , coalesce(v.rendimentos, 0) as rendimentos
+      , coalesce(v.vendas, 0) - coalesce(v.compras, 0) + coalesce(v.rendimentos, 0) as lucro_prejuizo       
+  from ( select s.id
+              , s.code
+              , ( select sum((quantity * unit_price)-cost) from finantial_movement where stock_id = s.id and finantial_movement_type_id in(7,10)) vendas
+              , ( select sum((quantity * unit_price)+cost) from finantial_movement where stock_id = s.id and finantial_movement_type_id in(6,9)) compras
+              , ( select sum((quantity * unit_price)) from finantial_movement where stock_id = s.id and finantial_movement_type_id in(2,3,4,8,10)) rendimentos
+           from stock s
+	   )v
+   order by 6 desc;
   
  
  

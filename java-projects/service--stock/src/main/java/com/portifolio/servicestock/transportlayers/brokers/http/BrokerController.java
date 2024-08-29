@@ -4,13 +4,14 @@ import com.portifolio.servicestock.interactors.brokers.BrokerUseCase;
 import com.portifolio.servicestock.transportlayers.brokers.BrokerHttpMapper;
 import com.portifolio.servicestock.transportlayers.brokers.dtos.BrokerPostRequest;
 import com.portifolio.servicestock.transportlayers.brokers.dtos.BrokerResponse;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.validation.Valid;
+
 import java.net.URI;
 import java.util.List;
 

@@ -6,18 +6,15 @@ server:
 
 # Spring config
 spring:
-  application:
-    name: servicestock
-
   datasource:
     url: jdbc:mysql://localhost:3306/my_stocks_db?createDatabaseIfNotExist=true
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: ${username}
-    password: ${password}
+    username: ${db_username}
+    password: ${db_password}
 
-    #url: jdbc-secretsmanager:mysql://localhost:3306/my_stocks_db
+    #url: jdbc-secretsmanager:mysql://localhost:3306/my_stocks_db?createDatabaseIfNotExist=true
     #driver-class-name: com.amazonaws.secretsmanager.sql.AWSSecretsManagerMySQLDriver
-    #username: secret/mysql
+    #user: /secret/servicestock
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
 
@@ -38,6 +35,7 @@ flyway:
   schema: my_stocks_db
   username: ${spring.datasource.username}
   password: ${spring.datasource.password}
+
 
 
 

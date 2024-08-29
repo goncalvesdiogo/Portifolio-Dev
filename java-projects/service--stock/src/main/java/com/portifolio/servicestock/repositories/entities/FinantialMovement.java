@@ -1,11 +1,11 @@
 package com.portifolio.servicestock.repositories.entities;
 
 import com.portifolio.servicestock.repositories.entities.enums.FinantialMovementType;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 

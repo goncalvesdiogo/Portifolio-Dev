@@ -1,9 +1,10 @@
 package com.portifolio.apibff.repositories.dtos;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.springframework.validation.annotation.Validated;
 
-import javax.validation.constraints.NotBlank;
+
 
 @Builder
 @Getter

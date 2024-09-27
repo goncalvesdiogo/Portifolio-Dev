@@ -1,13 +1,10 @@
 package com.portifolio.apibff.exceptions;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.portifolio.apibff.exceptions.web.ApiError;
 import com.portifolio.apibff.exceptions.web.ResponseEntityBuilder;
-import feign.FeignException;
-import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.ConstraintViolationException;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -18,6 +15,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.client.RestClientResponseException;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.NoHandlerFoundException;
@@ -167,21 +165,19 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     }
 
-    @ExceptionHandler(FeignException.class)
-    public ResponseEntity<Object> handleFeignException(FeignException e, HttpServletResponse response) throws JsonProcessingException {
+    @ExceptionHandler(RestClientResponseException.class)
+    public ResponseEntity<Object> handleRestClientResponseException(RestClientResponseException e) throws JsonProcessingException {
         var err = new ApiError();
         List<String> details = new ArrayList();
         details.add(e.getMessage());
 
-        switch (e.status()) {
+        switch (e.getStatusCode().value()) {
             case 400: {
                 err = new ApiError(LocalDateTime.now(), HttpStatus.BAD_REQUEST, "Malformed JSON request", details);
                 break;
             }
             case 404: {
-                ObjectMapper jsonMapper = new ObjectMapper();
-                jsonMapper.registerModule(new JavaTimeModule());
-                err = jsonMapper.readValue(e.contentUTF8(), ApiError.class);
+                err = e.getResponseBodyAs(new ParameterizedTypeReference<ApiError>() {});
                 break;
             }
             case 503: {
